@@ -14,6 +14,11 @@ import { installMetricsTools } from './install-metrics.js';
 import { appUpdatesTools } from './app-updates.js';
 import { crossAppUsageTools } from './cross-app-usage.js';
 import { sdkInsightsTools } from './sdk-insights.js';
+import { marketAnalysisTools } from './market-analysis.js';
+import { storeMarketingTools } from './store-marketing.js';
+import { customFieldsTools } from './custom-fields.js';
+import { yourMetricsTools } from './your-metrics.js';
+import { webInsightsTools } from './web-insights.js';
 
 export function getAllTools(): Map<string, McpToolDefinition> {
   return new Map<string, McpToolDefinition>([
@@ -31,5 +36,10 @@ export function getAllTools(): Map<string, McpToolDefinition> {
     ...appUpdatesTools,
     ...crossAppUsageTools,
     ...sdkInsightsTools,
+    ...marketAnalysisTools,
+    ...storeMarketingTools,
+    ...customFieldsTools,
+    ...yourMetricsTools,
+    ...webInsightsTools,
   ]);
 }
