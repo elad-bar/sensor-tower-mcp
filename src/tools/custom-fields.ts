@@ -33,11 +33,18 @@ export const customFieldsTools: [string, McpToolDefinition][] = [
   }],
   ["unified_apps", {
     name: "unified_apps",
-    description: `Retrieve iOS/Android app IDs for unified apps.`,
-    inputSchema: {"type":"object","properties":{"app_ids":{"type":"array","items":{"type":"string"},"description":"Array of unified app IDs"}},"required":["app_ids"]},
+    description: `Look up unified app IDs from platform-specific IDs, or resolve a unified ID to its platform-specific IDs.
+
+Use this tool to convert between ID types:
+- Pass app_id_type="itunes" with iOS app IDs to get their unified app IDs.
+- Pass app_id_type="android" with Android package names to get their unified app IDs.
+- Pass app_id_type="unified" with unified IDs to get the iOS/Android app IDs.
+
+The unified app ID is required for cross-platform queries like sales_report_estimates with os="unified".`,
+    inputSchema: {"type":"object","properties":{"app_ids":{"type":"array","items":{"type":"string"},"description":"Array of app IDs to look up"},"app_id_type":{"type":"string","enum":["unified","itunes","android"],"description":"Type of the provided app_ids: 'itunes' for iOS App Store IDs, 'android' for Google Play package names, 'unified' for Sensor Tower unified IDs"}},"required":["app_ids","app_id_type"]},
     method: "get",
     pathTemplate: "/v1/unified/apps",
-    executionParameters: [{"name":"app_ids","in":"query"}],
+    executionParameters: [{"name":"app_ids","in":"query"},{"name":"app_id_type","in":"query"}],
     requestBodyContentType: undefined,
     securityRequirements: [{"auth_token":[]}]
   }],

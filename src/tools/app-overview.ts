@@ -7,7 +7,14 @@ export const appOverviewTools: [string, McpToolDefinition][] = [
 
 Use this tool first when you need to find the app_id for a given app name before calling other Sensor Tower tools (e.g. sales_report_estimates, usage_active_users).
 
-Returns app_id, publisher info, categories, icon, and available countries for each match.`,
+Returns app_id, publisher info, categories, icon, and available countries for each match.
+
+IMPORTANT — UNIFIED APP IDs: This tool only searches iOS or Android individually. It returns platform-specific app IDs (numeric for iOS, package name for Android), NOT unified app IDs. To get the unified app ID needed for cross-platform queries (e.g. sales_report_estimates with os="unified"), call this tool once on either platform, then pass the returned app_id to the unified_apps tool which will return the unified app ID along with all platform-specific IDs.
+
+RECOMMENDED WORKFLOW for revenue/download queries:
+1. Call search_entities (os="ios" or "android") to find the app
+2. Call unified_apps with the app_id to get the unified app ID
+3. Call sales_report_estimates with os="unified" and the unified app ID for accurate cross-platform totals`,
     inputSchema: {"type":"object","properties":{"os":{"default":"ios","enum":["ios","android"],"type":"string","description":"Operating System"},"term":{"type":"string","description":"Search term — app name, publisher name, app ID, or Unified ID"},"entity_type":{"default":"app","enum":["app","publisher"],"type":"string","description":"Type of entity to search for"},"limit":{"default":10,"type":"number","description":"Maximum number of results to return (default 10)"}},"required":["os","term"]},
     method: "get",
     pathTemplate: "/v1/{os}/search_entities",
