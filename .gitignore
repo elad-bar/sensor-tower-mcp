@@ -64,3 +64,4 @@ web_modules/
 Thumbs.db
 
 package-lock.json
+.cursor/mcp.json
