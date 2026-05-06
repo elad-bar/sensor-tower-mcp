@@ -52,7 +52,7 @@ For shared or hosted deployments, run the server in HTTP mode. Each client sends
 ### With Docker (recommended)
 
 ```bash
-docker run -p 3000:3000 ghcr.io/elad-bar/sensor-tower-mcp:latest
+docker run -p 3000:3000 ghcr.io/elad-bar/sensor-tower-mcp:main
 ```
 
 Or using Docker Compose:
