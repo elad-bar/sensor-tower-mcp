@@ -52,6 +52,12 @@ For shared or hosted deployments, run the server in HTTP mode. Each client sends
 ### With Docker (recommended)
 
 ```bash
+docker run -p 3000:3000 ghcr.io/elad-bar/sensor-tower-mcp:latest
+```
+
+Or using Docker Compose:
+
+```bash
 docker compose up
 ```
 
@@ -117,12 +123,14 @@ npm run typecheck   # Type-check without emitting
 npm start           # Build and start (stdio mode)
 ```
 
-### Docker build
+### Docker build (local)
 
 ```bash
 docker build -t sensor-tower-mcp .
 docker run -p 3000:3000 sensor-tower-mcp
 ```
+
+Pre-built images are published to `ghcr.io/elad-bar/sensor-tower-mcp` on every push to `main`.
 
 ### Project Structure
 

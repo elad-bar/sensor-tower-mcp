@@ -1,6 +1,6 @@
 services:
   sensor-tower-mcp:
-    build: .
+    image: ghcr.io/elad-bar/sensor-tower-mcp:latest
     ports:
       - "${PORT:-3000}:3000"
     environment:
