@@ -1,6 +1,20 @@
 import type { McpToolDefinition } from '../types.js';
 
 export const appOverviewTools: [string, McpToolDefinition][] = [
+  ["search_entities", {
+    name: "search_entities",
+    description: `Search for apps and publishers by name, description, subtitle, promo text, in-app purchases, app ID, or Unified ID.
+
+Use this tool first when you need to find the app_id for a given app name before calling other Sensor Tower tools (e.g. sales_report_estimates, usage_active_users).
+
+Returns app_id, publisher info, categories, icon, and available countries for each match.`,
+    inputSchema: {"type":"object","properties":{"os":{"default":"ios","enum":["ios","android"],"type":"string","description":"Operating System"},"term":{"type":"string","description":"Search term — app name, publisher name, app ID, or Unified ID"},"entity_type":{"default":"app","enum":["app","publisher"],"type":"string","description":"Type of entity to search for"},"limit":{"default":10,"type":"number","description":"Maximum number of results to return (default 10)"}},"required":["os","term"]},
+    method: "get",
+    pathTemplate: "/v1/{os}/search_entities",
+    executionParameters: [{"name":"os","in":"path"},{"name":"term","in":"query"},{"name":"entity_type","in":"query"},{"name":"limit","in":"query"}],
+    requestBodyContentType: undefined,
+    securityRequirements: [{"auth_token":[]}]
+  }],
   ["apps", {
     name: "apps",
     description: `<p>Retrieve app metadata, such as app name, publisher, categories,
