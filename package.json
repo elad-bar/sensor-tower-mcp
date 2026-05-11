@@ -1,5 +1,5 @@
 {
-  "name": "sensor-tower-mcp",
+  "name": "@barush/sensor-tower-mcp",
   "version": "1.0.0",
   "description": "MCP server that exposes the Sensor Tower App Analysis API as AI-consumable tools",
   "type": "module",
