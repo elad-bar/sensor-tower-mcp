@@ -12,7 +12,23 @@ Add the server to your MCP client config. For Cursor, edit `.cursor/mcp.json`. F
 
 ### Local (stdio)
 
-Build the project first (`npm install && npm run build`), then point your client at the built server:
+No build or clone needed — run directly via npx:
+
+```json
+{
+  "mcpServers": {
+    "sensor-tower": {
+      "command": "npx",
+      "args": ["-y", "@barush/sensor-tower-mcp"],
+      "env": {
+        "SENSOR_TOWER_API_KEY": "your_api_key_here"
+      }
+    }
+  }
+}
+```
+
+Alternatively, if you have the repo cloned locally:
 
 ```json
 {
