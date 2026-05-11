@@ -1,6 +1,6 @@
 {
   "name": "@barush/sensor-tower-mcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MCP server that exposes the Sensor Tower App Analysis API as AI-consumable tools",
   "type": "module",
   "main": "build/index.js",
