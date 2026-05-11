@@ -1,8 +1,7 @@
 {
   "name": "sensor-tower-mcp",
-  "version": "1.0",
+  "version": "1.0.0",
   "description": "MCP server that exposes the Sensor Tower App Analysis API as AI-consumable tools",
-  "private": true,
   "type": "module",
   "main": "build/index.js",
   "files": [
@@ -31,5 +30,8 @@
     "@types/node": "^22.15.2",
     "shx": "^0.4.0",
     "typescript": "^5.8.3"
+  },
+  "bin": {
+    "sensor-tower-mcp": "./build/index.js"
   }
 }
